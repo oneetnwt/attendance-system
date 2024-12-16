@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block title %}
+SBO Attendance
+{% endblock %}
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>AM</th>
+            <th>PM</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for officer in student %}
+        <tr>
+            <td>{{ officer.name }}</td>
+            {% if officer.am %}
+            <td>{{ officer.am.strftime('%I:%M %p')}}</td>
+            {% else %}
+            <td>Not logged yet</td>
+            {% endif %}
+            {% if officer.pm %}
+            <td>{{ officer.pm.strftime('%I:%M %p')}}</td>
+            {% else %}
+            <td>Not logged yet</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
